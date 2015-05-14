@@ -1,0 +1,47 @@
+<html>
+<head>
+  <title>Heroku Connect Data Demo</title>
+  <link href="images/favicon.ico" rel="shortcut icon" type="image/vnd.microsoft.icon" /> 
+  <link href='https://fonts.googleapis.com/css?family=Lora' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="https://www.herokucdn.com/purple/1.0.0/purple.min.css">
+  <link rel="stylesheet" href="css/style.css">
+<body>
+<div class="content">
+  <header id="header" class="gradient-primary">
+    <div class="padded" id="header-container">
+      <h1>Heroku Connect Data Demo</h1>
+    </div>    
+  </header>
+  <div id="main" class="row inherit-height no-gutters">
+    <div id="left-column" class="col-md-4">
+      <section id="data-table" class="padded">
+        <table class="table table-condensed table-hover">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Accounts</th>
+              <th style="text-align: right">#</th>
+            </tr>
+          </thead>
+          <tbody>            
+          </tbody>           
+        </table>       
+      </section>
+    </div>
+    <div id="right-column" class="col-md-8 inherit-height">
+      <section id="google-map" class="inherit-height">
+      	<div id="google-map-container"></div>
+      	<div id="google-map-zoom-in"></div>
+      	<div id="google-map-zoom-out"></div>
+      </section>
+    </div>
+  </div>
+</div>
+  
+<script src="https://www.herokucdn.com/purple/1.0.0/purple.min.js"></script>
+<script src="https://maps.googleapis.com/maps/api/js"></script>
+<script src="js/jquery.isloading.min.js"></script>
+<script src="js/map.js"></script>
+<script src="js/datademo.js"></script>
+</body>

@@ -1,0 +1,5 @@
+.env
+*.log
+vendor
+.bundle
+.ruby-version
