@@ -45,3 +45,7 @@ This is work in progress - it is not production level code!
 The update to the database is currently a blocking call in the web thread - this repository is work in progress and over time this will be refactored to use a backend worker and appropriate message queue/notification stream to allow the update to take place asyncronously without blocking the web processes.
 
 Likewise, the Javascript should not currently be considered best practice nor production ready - this will also be refactored over time to make use of better Javascript development patterns - perhaps using React.
+
+## Issues
+
+Please submit issues using Github issues https://github.com/heroku/datademo/issues
