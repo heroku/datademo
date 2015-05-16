@@ -20,6 +20,9 @@ The main purpose is to show that you can manipulate large volumes of data within
 
 1. First, setup a Salesforce Org following the instructions in the Chatter Group for this demo.
 2. Next, hit the deploy to Heroku button - you will need a Heroku account.
+
+   [![Deploy](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy)
+
 3. Once the button has deployed the app, go into your Heroku dashboard for the app you just created. 
 4. Click on Heroku Connect in the list of addons for your app - this will take you to the Heroku Connect dashboard.
 5. Follow the steps to initialise Heroku Connect - leave the default settings as they are - authorise Heroku Connect using the login and password for the Salesforce Org you created in step 1.

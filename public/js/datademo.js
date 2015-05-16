@@ -81,7 +81,7 @@ jQuery(document).ready(function($){
   
   // display an error if there is a problem getting the data or building the table
   function renderTableError(msg) {
-    if (msg === undefined || msg.length === 0) msg = 'Error - Could not retrieve data.';
+    if (msg === undefined || msg.length === 0) msg = 'Error - Could not retrieve data';
     $("#data-table table tbody").html('<tr class="warning"><td colspan="3">'+msg+'</td></tr>');
   }
   

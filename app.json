@@ -1,0 +1,16 @@
+{
+  "name": "Heroku Data Demo",
+  "description": "Demo for the Heroku Data Play - using Heroku Connect",
+  "keywords": [
+    "heroku",
+    "data"
+  ],
+  "addons": [
+    "herokuconnect:danketsu",
+    "heroku-postgresql:standard-0"
+  ],
+  "env": {
+    "LANG": "en_US.UTF-8",
+    "RACK_ENV": "production"
+  }
+}
