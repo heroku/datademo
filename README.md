@@ -1,5 +1,7 @@
 # Data Demo
 
+[![Deploy](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy)
+
 ## Introduction
 
 This is a simple demonstration showing how you can use Heroku and Heroku Connect to manipulate large volumes of data, using standard SQL in your apps, and let Heroku Connect seamlessly synchronise the changes to the Salesforce organisaion.
