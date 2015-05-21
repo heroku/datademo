@@ -76,7 +76,7 @@ namespace :database do
           'billinglatitude' => COUNTRY_LOOKUP[account['billing_country']].first,
           'billinglongitude' => COUNTRY_LOOKUP[account['billing_country']].last,
           'name' => account['account_name'],
-          'account_manager__c__external_id__c' => country_account_manager_external_ids[account['billing_country']],
+          'account_manager__r__external_id__c' => country_account_manager_external_ids[account['billing_country']],
           'created_by_automaton__c' => true
         }
       end.in_groups_of(500) do |records|

@@ -84,7 +84,7 @@ class HerokuConnectDataDemoApplication < Sinatra::Base
     left_outer_join(
       database[:salesforce__account].
       select_group(
-        Sequel.lit('account_manager__c__external_id__c'),
+        Sequel.lit('account_manager__r__external_id__c'),
         :billingcountry
       ).
       select_append{
@@ -94,7 +94,7 @@ class HerokuConnectDataDemoApplication < Sinatra::Base
           max(:billinglongitude).as(:billinglongitude)
         ]
       },
-      { Sequel.lit('account_manager__c__external_id__c') => Sequel.lit('external_id__c') },
+      { Sequel.lit('account_manager__r__external_id__c') => Sequel.lit('external_id__c') },
       { table_alias: :account_summary }).
     order(:account_manager_lastname, :account_manager_firstname)
   end
@@ -151,7 +151,7 @@ class HerokuConnectDataDemoApplication < Sinatra::Base
 
       halt(404) if user_external_id.nil? || country.nil?
 
-      database[:salesforce__account].where(billingcountry: country).update(Sequel.lit('account_manager__c__external_id__c') => user_external_id)
+      database[:salesforce__account].where(billingcountry: country).update(Sequel.lit('account_manager__r__external_id__c') => user_external_id)
       status(200)
     end
   end
