@@ -230,7 +230,7 @@ jQuery(document).ready(function($){
       });
     });
 
-    if (!update) {
+    if (!update && users.length > 0) {
       google.maps.event.addListener(map, "click", function(event) {
         $.each(markers, function() {
           this.info.close();
