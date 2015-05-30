@@ -10,6 +10,9 @@ gem 'sinatra-contrib'
 gem 'puma'
 gem 'activesupport'
 
+gem 'sidekiq'
+gem 'sidekiq-status'
+
 group :development, :test do
   gem 'dotenv'
   gem 'tux'

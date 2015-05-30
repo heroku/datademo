@@ -7,7 +7,8 @@
   ],
   "addons": [
     "herokuconnect:danketsu",
-    "heroku-postgresql:standard-0"
+    "heroku-postgresql:standard-0",
+    "heroku-redis:test"
   ],
   "env": {
     "LANG": "en_US.UTF-8",

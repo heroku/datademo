@@ -19,5 +19,21 @@ use Rack::TryStatic,
   index: 'index.html',
   root: File.expand_path('../public', __FILE__)
 
-require './heroku_connect_data_demo_application'
-run HerokuConnectDataDemoApplication
+# You can optionally enable authentication on the sidekiq dashboard - uncomment the lines below and set the config vars
+#Sidekiq::Web.use Rack::Auth::Basic do |username, password|
+#  username == ENV["SIDEKIQ_USERNAME"] && password == ENV["SIDEKIQ_PASSWORD"]
+#end
+
+require 'sidekiq/web'
+require 'sidekiq-status'
+require 'sidekiq-status/web'
+require './app/server/application'
+require './app/workers/account_manager_assignment_worker'
+
+Sidekiq.configure_client do |config|
+  config.client_middleware do |chain|
+    chain.add Sidekiq::Status::ClientMiddleware
+  end
+end
+
+run Rack::URLMap.new('/' => Application, '/sidekiq' => Sidekiq::Web)

@@ -3,8 +3,9 @@ require 'sinatra/base'
 require 'sinatra/json'
 require 'sinatra/namespace'
 require 'sinatra/reloader'
+require 'sidekiq/web'
 
-class HerokuConnectDataDemoApplication < Sinatra::Base
+class Application < Sinatra::Base
 
   COUNTRY_CODES = {
     'Austria' => 'at',
@@ -111,7 +112,7 @@ class HerokuConnectDataDemoApplication < Sinatra::Base
     
     summary
   end
-
+  
   namespace '/api' do
     get '/countries/:country_code' do
       country_code = params[:country_code].to_s.downcase
@@ -151,8 +152,15 @@ class HerokuConnectDataDemoApplication < Sinatra::Base
 
       halt(404) if user_external_id.nil? || country.nil?
 
-      database[:salesforce__account].where(billingcountry: country).update(Sequel.lit('account_manager__r__external_id__c') => user_external_id)
-      status(200)
+      job_id = AccountManagerAssignmentWorker.perform_async(country, user_external_id)
+            
+      json(job_id: job_id)
+    end
+    
+    # get job status
+    get '/jobs/:job_id' do
+      halt(404) if /\A[a-z0-9]+\z/i !~ params[:job_id] 
+      json(Sidekiq::Status::get_all(params[:job_id]))
     end
   end
 

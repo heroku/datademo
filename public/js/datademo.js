@@ -261,19 +261,39 @@ jQuery(document).ready(function($){
     var data = { country_code: updateData.countryCode };
     
     $.ajax({type: 'POST', url: '/api/users/'+updateData.newUserId, data: data})
-    .done(function() {
-      fetchAndProcessJson(updateData);
+    .done(function(jobResponse) {
+      poll(jobResponse.job_id, infoParentDiv, infoDiv, updateData)
     })
     .fail(function() {
       renderTableError("Error submitting data");
       infoDiv.html('<table><tr class="warning"><td colspan="3">Error - Could not update data</td></tr></table>');
-    })
-    .always(function() {
-      infoParentDiv.isLoading("hide");
-      columns.left.loading(false);
     });
     
     return true;
+  }
+  
+  // not the best code in the world
+  function poll(jobId, infoParentDiv, infoDiv, updateData) {
+    var jobStatus = '';
+    
+    setTimeout(function(){
+      $.ajax({ url: "/api/jobs/"+jobId, success: function(job_details){
+        job_status = job_details.status;
+          
+        if (job_status == 'queued' || job_status == 'working') {
+          poll(jobId, infoParentDiv, infoDiv, updateData);
+        } else if (job_status == 'stopped' || job_status == 'failed') {
+          infoDiv.html('<table><tr class="warning"><td colspan="3">Error - Could not update data - try reloading the page</td></tr></table>');
+          renderTableError("Error updating data");
+          infoParentDiv.isLoading("hide");
+          columns.left.loading(false);     
+        } else {
+          fetchAndProcessJson(updateData);
+          infoParentDiv.isLoading("hide");
+          columns.left.loading(false);          
+        }
+      }, dataType: "json"});
+    }, 2500);    
   }
   
   function fetchAndProcessJson(updateData) {
