@@ -15,7 +15,7 @@
     "RACK_ENV": "production"
   },
   "formation": [		
-    { "process": "web", "quantity": 1 },
-    { "process": "worker", "quantity": 1 }
+    { "process": "web", "quantity": 1, "size":"standard-2x" },
+    { "process": "worker", "quantity": 1, "size":"standard-2x" }
   ]
 }
