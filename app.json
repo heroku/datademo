@@ -13,9 +13,5 @@
   "env": {
     "LANG": "en_US.UTF-8",
     "RACK_ENV": "production"
-  },
-  "formation": [
-    { "process": "web", "quantity": 1, "size": "Hobby" },
-    { "process": "worker", "quantity": 1, "size": "Hobby" }
-  ]
+  }
 }
