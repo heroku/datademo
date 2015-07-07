@@ -6,7 +6,7 @@
     "data"
   ],
   "addons": [
-    "herokuconnect:danketsu",
+    "herokuconnect:test",
     "heroku-postgresql:standard-0",
     "heroku-redis:hobby-dev"
   ],
