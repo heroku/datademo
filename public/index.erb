@@ -38,9 +38,10 @@
     </div>
   </div>
 </div>
-  
 <script src="https://www.herokucdn.com/purple/1.0.0/purple.min.js"></script>
-<script src="https://maps.googleapis.com/maps/api/js"></script>
+<%= Time.now %>
+<script src="https://maps.googleapis.com/maps/api/js?key=<%= h ENV["MAPS_API_KEY"] %>"></script>
+
 <script src="js/jquery.isloading.min.js"></script>
 <script src="js/map.js"></script>
 <script src="js/datademo.js"></script>

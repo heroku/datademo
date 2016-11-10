@@ -9,6 +9,7 @@ gem 'sinatra'
 gem 'sinatra-contrib'
 gem 'puma'
 gem 'activesupport'
+gem 'rack-server-pages'
 
 gem 'sidekiq'
 gem 'sidekiq-status'

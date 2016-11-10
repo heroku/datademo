@@ -2,6 +2,7 @@
 require 'rubygems'
 require 'bundler'
 require 'rack/contrib'
+require 'rack-server-pages'
 
 ENV['RACK_ENV'] ||= 'development'
 
@@ -13,11 +14,10 @@ if Gem::Specification.find_all_by_name('dotenv').any?
 end
 
 $stdout.sync = true
-
-use Rack::TryStatic,
-  urls: ['/js', '/css', '/images', '/'],
-  index: 'index.html',
-  root: File.expand_path('../public', __FILE__)
+  
+use Rack::ServerPages do |config|
+  config.view_path = File.expand_path('../public', __FILE__)
+end
 
 # You can optionally enable authentication on the sidekiq dashboard - uncomment the lines below and set the config vars
 #Sidekiq::Web.use Rack::Auth::Basic do |username, password|
