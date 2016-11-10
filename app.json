@@ -11,6 +11,10 @@
     "heroku-redis:hobby-dev"
   ],
   "env": {
+    "MAPS_API_KEY": {
+      "value": "",
+      "required": true
+    },
     "LANG": "en_US.UTF-8",
     "RACK_ENV": "production"
   },
