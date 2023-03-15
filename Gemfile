@@ -8,7 +8,7 @@ gem 'sequel'
 gem 'sinatra'
 gem 'sinatra-contrib'
 gem 'puma'
-gem 'activesupport'
+gem 'activesupport', '>= 6.1.7.3'
 gem 'rack-server-pages'
 
 gem 'sidekiq'
