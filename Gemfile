@@ -11,8 +11,8 @@ gem 'puma'
 gem 'activesupport'
 gem 'rack-server-pages'
 
-gem 'sidekiq'
-gem 'sidekiq-status'
+gem 'sidekiq', '>= 7.0.8'
+gem 'sidekiq-status', '>= 0.5.4'
 
 group :development, :test do
   gem 'dotenv'
