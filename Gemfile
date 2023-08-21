@@ -7,7 +7,7 @@ gem 'rake'
 gem 'sequel'
 gem 'sinatra'
 gem 'sinatra-contrib'
-gem 'puma'
+gem 'puma', '>= 5.6.7'
 gem 'activesupport'
 gem 'rack-server-pages'
 
